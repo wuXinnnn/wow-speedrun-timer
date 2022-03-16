@@ -296,13 +296,15 @@ let loadPreset = (e, filePath) => {
     });
   } catch (error) {
     console.log(error);
-    gEvent.emit("errorModalShow", [
-      "Invalid Preset File <span>QAQ</span>",
-      "upload",
-    ]);
-    global = globalBackup;
-    GuildFrameIni();
-    globalIni();
+    if (e != "loadLast") {
+      gEvent.emit("errorModalShow", [
+        "Invalid Preset File <span>QAQ</span>",
+        "upload",
+      ]);
+      global = globalBackup;
+      GuildFrameIni();
+      globalIni();
+    }
   }
 };
 
