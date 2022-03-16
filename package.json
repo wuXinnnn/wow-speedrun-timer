@@ -1,0 +1,38 @@
+{
+  "name": "wow-speedrun-timer",
+  "version": "1.0.0",
+  "description": "a wow speedrun timer for imbatv and netease",
+  "main": "main.js",
+  "build": {
+    "appId": "com.wst.app",
+    "win": {
+      "target": [
+        "zip"
+      ]
+    },
+    "asar": false
+  },
+  "scripts": {
+    "start": "electron .",
+    "dist": "electron-builder --win --x64"
+  },
+  "keywords": [
+    "wow",
+    "speedrun",
+    "timer",
+    "imbatv"
+  ],
+  "author": "wuXin",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^17.1.2",
+    "electron-builder": "^22.14.13",
+    "electron-reloader": "^1.2.3"
+  },
+  "dependencies": {
+    "@electron/remote": "^2.0.5",
+    "electron-drag": "^2.0.0",
+    "express": "^4.17.3",
+    "win-mouse": "^2.0.1"
+  }
+}

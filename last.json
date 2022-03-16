@@ -1,0 +1,368 @@
+{
+  "bossList": [
+    {
+      "bossName": "埃基尔松（鹰）",
+      "drops": [
+        {
+          "item": "[魔精医师的面具]",
+          "points": 1
+        },
+        {
+          "item": "[浸血的精灵战衣]",
+          "points": 1
+        },
+        {
+          "item": "[隐秘意图胸甲]",
+          "points": 1
+        },
+        {
+          "item": "[自然怜悯胸针]",
+          "points": 3
+        },
+        {
+          "item": "[上古魔法徽记]",
+          "points": 1
+        },
+        {
+          "item": "[埃基尔松的爪刃]",
+          "points": 2
+        },
+        {
+          "item": "[阿曼尼惩戒者]",
+          "points": 2
+        },
+        {
+          "item": "[公式：附魔武器 - 斩杀]",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "bossName": "纳洛拉克（熊灵）",
+      "drops": [
+        {
+          "item": "[神圣意志长袍]",
+          "points": 1
+        },
+        {
+          "item": "[巨熊之怒]",
+          "points": 2
+        },
+        {
+          "item": "[刀锋天使的钱币腰带]",
+          "points": 3
+        },
+        {
+          "item": "[原始怒火肩甲]",
+          "points": 1
+        },
+        {
+          "item": "[反省面具]",
+          "points": 1
+        },
+        {
+          "item": "[丛林践踏者]",
+          "points": 1
+        },
+        {
+          "item": "[怒火]",
+          "points": 1
+        },
+        {
+          "item": "[公式：附魔武器 - 斩杀]",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "bossName": "加亚莱（龙鹰）",
+      "drops": [
+        {
+          "item": "[疯狂足垫]",
+          "points": 1
+        },
+        {
+          "item": "[天然恢复头盔]",
+          "points": 1
+        },
+        {
+          "item": "[影牙巨魔皮甲]",
+          "points": 1
+        },
+        {
+          "item": "[箭雨胸甲]",
+          "points": 1
+        },
+        {
+          "item": "[瓦布的妖术诅咒之刃]",
+          "points": 3
+        },
+        {
+          "item": "[阿曼尼帝国壁垒]",
+          "points": 2
+        },
+        {
+          "item": "[魔精瓷盘]",
+          "points": 2
+        },
+        {
+          "item": "[公式：附魔武器 - 斩杀]",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "bossName": "哈尔拉兹（山猫）",
+      "drops": [
+        {
+          "item": "[逝者英灵长袍]",
+          "points": 1
+        },
+        {
+          "item": "[剑舞护肩]",
+          "points": 1
+        },
+        {
+          "item": "[光滑皮毛外衣]",
+          "points": 1
+        },
+        {
+          "item": "[雪崩护腿]",
+          "points": 1
+        },
+        {
+          "item": "[鼓吹肩铠]",
+          "points": 1
+        },
+        {
+          "item": "[碎颅战靴]",
+          "points": 1
+        },
+        {
+          "item": "[蛮族项圈]",
+          "points": 1
+        },
+        {
+          "item": "[公式：附魔武器 - 斩杀]",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "bossName": "妖术领主玛拉卡斯",
+      "drops": [
+        {
+          "item": "[上古仪祭披风]",
+          "points": 2
+        },
+        {
+          "item": "[妖术兜帽]",
+          "points": 2
+        },
+        {
+          "item": "[三眼兜帽]",
+          "points": 2
+        },
+        {
+          "item": "[丛林行者兜帽]",
+          "points": 2
+        },
+        {
+          "item": "[妖术领主的巫毒肩铠]",
+          "points": 1
+        },
+        {
+          "item": "[百战獠盔]",
+          "points": 2
+        },
+        {
+          "item": "[激流堡的希望]",
+          "points": 1
+        },
+        {
+          "item": "[妖术之颅]",
+          "points": 5
+        },
+        {
+          "item": "[小巫毒面具]",
+          "points": 1
+        },
+        {
+          "item": "[魔鬼治疗宝典]",
+          "points": 4
+        },
+        {
+          "item": "[邪恶魔精匕首]",
+          "points": 4
+        },
+        {
+          "item": "[徘徊者的利刃]",
+          "points": 3
+        },
+        {
+          "item": "[无情]",
+          "points": 3
+        },
+        {
+          "item": "[原始怒火法杖]",
+          "points": 3
+        },
+        {
+          "item": "[公式：附魔武器 - 斩杀]",
+          "points": 10
+        }
+      ]
+    },
+    {
+      "bossName": "祖尔金",
+      "drops": [
+        {
+          "item": "[双趾拖鞋]",
+          "points": 2
+        },
+        {
+          "item": "[扭曲面甲]",
+          "points": 2
+        },
+        {
+          "item": "[帝国勇士的锁甲]",
+          "points": 2
+        },
+        {
+          "item": "[督军胸甲]",
+          "points": 2
+        },
+        {
+          "item": "[诅咒骨环]",
+          "points": 3
+        },
+        {
+          "item": "[上古埃基尔神器]",
+          "points": 3
+        },
+        {
+          "item": "[狂暴者的召唤]",
+          "points": 5
+        },
+        {
+          "item": "[扭曲预言之刃]",
+          "points": 4
+        },
+        {
+          "item": "[金洛斯，末日的启示者]",
+          "points": 5
+        },
+        {
+          "item": "[无情利斧]",
+          "points": 3
+        },
+        {
+          "item": "[黑暗祝福]",
+          "points": 4
+        },
+        {
+          "item": "[上古阿曼尼长弓]",
+          "points": 3
+        },
+        {
+          "item": "[公式：附魔武器 - 斩杀]",
+          "points": 10
+        }
+      ]
+    }
+  ],
+  "data": {
+    "startTimeStamp": 0,
+    "startTime": "",
+    "timeDurationStr": "",
+    "timeDurationStamp": 0,
+    "stops": [],
+    "paused": false,
+    "guilds": {
+      "天涯": {
+        "guildName": "天涯",
+        "guildPic": "天涯.png",
+        "timeLine": [
+          {
+            "bossName": "埃基尔松（鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "纳洛拉克（熊灵）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "加亚莱（龙鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "哈尔拉兹（山猫）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "妖术领主玛拉卡斯",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "祖尔金",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          }
+        ]
+      },
+      "Aster": {
+        "guildName": "Aster",
+        "guildPic": "Aster.png",
+        "timeLine": [
+          {
+            "bossName": "埃基尔松（鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "纳洛拉克（熊灵）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "加亚莱（龙鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "哈尔拉兹（山猫）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "妖术领主玛拉卡斯",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "祖尔金",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          }
+        ]
+      }
+    }
+  }
+}

@@ -1,0 +1,286 @@
+{
+    "天涯": {
+      "guildName": "天涯",
+      "guildPic": "天涯.png",
+      "guildDrops": {
+        "埃基尔松（鹰）": {
+          "bossName": "埃基尔松（鹰）",
+          "bossPic": "埃基尔松（鹰）.png",
+          "drops": [
+            {
+              "dropName": "[魔精医师的面具]",
+              "dropPic": "[魔精医师的面具].png",
+              "points": 1
+            },
+            {
+              "dropName": "[隐秘意图胸甲]",
+              "dropPic": "[隐秘意图胸甲].png",
+              "points": 1
+            }
+          ],
+          "bossPoints": 2
+        },
+        "纳洛拉克（熊灵）": {
+          "bossName": "纳洛拉克（熊灵）",
+          "bossPic": "纳洛拉克（熊灵）.png",
+          "drops": [
+            {
+              "dropName": "[原始怒火肩甲]",
+              "dropPic": "[原始怒火肩甲].png",
+              "points": 1
+            }
+          ],
+          "bossPoints": 1
+        },
+        "加亚莱（龙鹰）": {
+          "bossName": "加亚莱（龙鹰）",
+          "bossPic": "加亚莱（龙鹰）.png",
+          "drops": [
+            {
+              "dropName": "[影牙巨魔皮甲]",
+              "dropPic": "[影牙巨魔皮甲].png",
+              "points": 1
+            },
+            {
+              "dropName": "[箭雨胸甲]",
+              "dropPic": "[箭雨胸甲].png",
+              "points": 1
+            }
+          ],
+          "bossPoints": 2
+        },
+        "哈尔拉兹（山猫）": {
+          "bossName": "哈尔拉兹（山猫）",
+          "bossPic": "哈尔拉兹（山猫）.png",
+          "drops": [
+            {
+              "dropName": "[光滑皮毛外衣]",
+              "dropPic": "[光滑皮毛外衣].png",
+              "points": 1
+            }
+          ],
+          "bossPoints": 1
+        },
+        "妖术领主玛拉卡斯": {
+          "bossName": "妖术领主玛拉卡斯",
+          "bossPic": "妖术领主玛拉卡斯.png",
+          "drops": [
+            {
+              "dropName": "[三眼兜帽]",
+              "dropPic": "[三眼兜帽].png",
+              "points": 2
+            }
+          ],
+          "bossPoints": 2
+        },
+        "祖尔金": {
+          "bossName": "祖尔金",
+          "bossPic": "祖尔金.png",
+          "drops": [
+            {
+              "dropName": "[帝国勇士的锁甲]",
+              "dropPic": "[帝国勇士的锁甲].png",
+              "points": 2
+            }
+          ],
+          "bossPoints": 2
+        },
+        "限时宝箱1": {
+          "bossName": "限时宝箱1",
+          "bossPic": "限时宝箱1.png",
+          "drops": [
+            {
+              "dropName": "[暗影法师斗篷]",
+              "dropPic": "[暗影法师斗篷].png",
+              "points": 3
+            }
+          ],
+          "bossPoints": 3
+        },
+        "限时宝箱2": {
+          "bossName": "限时宝箱2",
+          "bossPic": "限时宝箱2.png",
+          "drops": [
+            {
+              "dropName": "[原始怒火徽记]",
+              "dropPic": "[原始怒火徽记].png",
+              "points": 3
+            }
+          ],
+          "bossPoints": 3
+        },
+        "限时宝箱3": {
+          "bossName": "限时宝箱3",
+          "bossPic": "限时宝箱3.png",
+          "drops": [
+            {
+              "dropName": "[暗影剃刀]",
+              "dropPic": "[暗影剃刀].png",
+              "points": 5
+            }
+          ],
+          "bossPoints": 5
+        },
+        "限时宝箱4": {
+          "bossName": "限时宝箱4",
+          "bossPic": "限时宝箱4.png",
+          "drops": [
+            {
+              "dropName": "[阿曼尼战熊]",
+              "dropPic": "[阿曼尼战熊].png",
+              "points": 10
+            }
+          ],
+          "bossPoints": 10
+        }
+      },
+      "pointsTotal": 31
+    },
+    "Aster": {
+      "guildName": "Aster",
+      "guildPic": "Aster.png",
+      "guildDrops": {
+        "埃基尔松（鹰）": {
+          "bossName": "埃基尔松（鹰）",
+          "bossPic": "埃基尔松（鹰）.png",
+          "drops": [
+            {
+              "dropName": "[浸血的精灵战衣]",
+              "dropPic": "[浸血的精灵战衣].png",
+              "points": 1
+            },
+            {
+              "dropName": "[自然怜悯胸针]",
+              "dropPic": "[自然怜悯胸针].png",
+              "points": 3
+            }
+          ],
+          "bossPoints": 4
+        },
+        "纳洛拉克（熊灵）": {
+          "bossName": "纳洛拉克（熊灵）",
+          "bossPic": "纳洛拉克（熊灵）.png",
+          "drops": [
+            {
+              "dropName": "[巨熊之怒]",
+              "dropPic": "[巨熊之怒].png",
+              "points": 2
+            },
+            {
+              "dropName": "[刀锋天使的钱币腰带]",
+              "dropPic": "[刀锋天使的钱币腰带].png",
+              "points": 3
+            }
+          ],
+          "bossPoints": 5
+        },
+        "加亚莱（龙鹰）": {
+          "bossName": "加亚莱（龙鹰）",
+          "bossPic": "加亚莱（龙鹰）.png",
+          "drops": [
+            {
+              "dropName": "[天然恢复头盔]",
+              "dropPic": "[天然恢复头盔].png",
+              "points": 1
+            },
+            {
+              "dropName": "[天然恢复头盔]",
+              "dropPic": "[天然恢复头盔].png",
+              "points": 1
+            }
+          ],
+          "bossPoints": 2
+        },
+        "哈尔拉兹（山猫）": {
+          "bossName": "哈尔拉兹（山猫）",
+          "bossPic": "哈尔拉兹（山猫）.png",
+          "drops": [
+            {
+              "dropName": "[剑舞护肩]",
+              "dropPic": "[剑舞护肩].png",
+              "points": 1
+            }
+          ],
+          "bossPoints": 1
+        },
+        "妖术领主玛拉卡斯": {
+          "bossName": "妖术领主玛拉卡斯",
+          "bossPic": "妖术领主玛拉卡斯.png",
+          "drops": [
+            {
+              "dropName": "[三眼兜帽]",
+              "dropPic": "[三眼兜帽].png",
+              "points": 2
+            }
+          ],
+          "bossPoints": 2
+        },
+        "祖尔金": {
+          "bossName": "祖尔金",
+          "bossPic": "祖尔金.png",
+          "drops": [
+            {
+              "dropName": "[帝国勇士的锁甲]",
+              "dropPic": "[帝国勇士的锁甲].png",
+              "points": 2
+            }
+          ],
+          "bossPoints": 2
+        },
+        "限时宝箱1": {
+          "bossName": "限时宝箱1",
+          "bossPic": "限时宝箱1.png",
+          "drops": [
+            {
+              "dropName": "[邪魔披风]",
+              "dropPic": "[邪魔披风].png",
+              "points": 2
+            },
+            {
+              "dropName": "[邪恶预谋衬肩]",
+              "dropPic": "[邪恶预谋衬肩].png",
+              "points": 1
+            }
+          ],
+          "bossPoints": 3
+        },
+        "限时宝箱2": {
+          "bossName": "限时宝箱2",
+          "bossPic": "限时宝箱2.png",
+          "drops": [
+            {
+              "dropName": "[原始怒火徽记]",
+              "dropPic": "[原始怒火徽记].png",
+              "points": 3
+            }
+          ],
+          "bossPoints": 3
+        },
+        "限时宝箱3": {
+          "bossName": "限时宝箱3",
+          "bossPic": "限时宝箱3.png",
+          "drops": [
+            {
+              "dropName": "[托尔贝恩]",
+              "dropPic": "[托尔贝恩].png",
+              "points": 5
+            }
+          ],
+          "bossPoints": 5
+        },
+        "限时宝箱4": {
+          "bossName": "限时宝箱4",
+          "bossPic": "限时宝箱4.png",
+          "drops": [
+            {
+              "dropName": "[阿曼尼战熊]",
+              "dropPic": "[阿曼尼战熊].png",
+              "points": 10
+            }
+          ],
+          "bossPoints": 10
+        }
+      },
+      "pointsTotal": 37
+    }
+  }
