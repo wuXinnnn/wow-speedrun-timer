@@ -309,7 +309,7 @@ let loadPreset = (e, filePath) => {
         TotalResetButton.classList.add("is-disabled");
         let timeCur = new Date();
         autoSaveInterval = setInterval(() => {
-          // saveGlobal("autoSave", "autoSave", path.join(__dirname, "last.json"));
+          saveGlobal("autoSave", "autoSave", path.join(__dirname, "last.json"));
         }, 10000);
         if (!globalCache.data.paused && globalCache.data.started) {
           let durationStampCur = timeCur - globalCache.data.startTimeStamp;
