@@ -1,6 +1,6 @@
 {
   "name": "wow-speedrun-timer",
-  "version": "1.0.0",
+  "version": "1.2.1",
   "description": "a wow speedrun timer for imbatv and netease",
   "main": "main.js",
   "build": {
