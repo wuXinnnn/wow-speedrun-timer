@@ -153,7 +153,9 @@ addButton.addEventListener("click", () => {
 reduceButton.addEventListener("click", () => {
   let guildCount = guildBossesFrames.length;
   let guildContent = document.getElementsByClassName("content")[guildCount - 1];
+  let guildName = guildContent.getElementsByTagName("input")[0].value;
   guildContent.remove();
+  delete global.data.guilds[guildName];
   stopers[guildCount - 1].forEach((stoper) => {
     stoper.removeEventListener("change", timerStopCallback);
   });

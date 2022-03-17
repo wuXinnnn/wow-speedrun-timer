@@ -11,6 +11,28 @@ server.get("/", function (req, res) {
   });
   res.end(JSON.stringify(global.data, null, 2));
 });
+
+server.get("/timeLine", function (req, res) {
+  console.log(req.method);
+  res.writeHead(200, {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  });
+  res.end(JSON.stringify(global.data.guilds, null, 2));
+});
+
+server.get("/mapSim", function (req, res) {
+  console.log(req.method);
+  res.writeHead(200, { "Content-Type": "text/html" });
+  res.end(fs.readFileSync(path.join(__dirname, "/mapSim/index.html")));
+});
+
+server.use("/styles", express.static(__dirname + "/mapSim/styles"));
+server.use("/scripts", express.static(__dirname + "/mapSim/scripts"));
+server.use("/bossAvatars", express.static(__dirname + "/mapSim/bossAvatars"));
+server.use("/teamLogoes", express.static(__dirname + "/mapSim/teamLogoes"));
+server.use("/map.png", express.static(__dirname + "/mapSim/map.png"));
+
 let events = require("events");
 let fs = require("fs");
 let ipcRenderer = require("electron").ipcRenderer;
@@ -56,6 +78,7 @@ let globalReady = () => {
       guildName: guildName,
       guildPic: guildName + ".png",
       timeLine: [],
+      guildId: index,
     };
     global.bossList.forEach((boss) => {
       let bossObj = {
@@ -250,7 +273,17 @@ let loadPreset = (e, filePath) => {
     });
     stopers = [];
     contentContainer.innerHTML = "";
-    Object.keys(globalCache.data.guilds).forEach((guildName, index) => {
+    let guildsSort = [];
+    for (
+      let index = 0;
+      index < Object.keys(globalCache.data.guilds).length;
+      index++
+    ) {
+      let guildName = Object.keys(globalCache.data.guilds)[index];
+      guildsSort[globalCache.data.guilds[guildName].guildId] = guildName;
+    }
+    for (let index = 0; index < guildsSort.length; index++) {
+      let guildName = guildsSort[index];
       guildBossListCreator(index);
       document.getElementsByTagName("input")[index].value = guildName;
       globalCache.data.guilds[guildName].timeLine.forEach((boss, bossIndex) => {
@@ -276,7 +309,7 @@ let loadPreset = (e, filePath) => {
         TotalResetButton.classList.add("is-disabled");
         let timeCur = new Date();
         autoSaveInterval = setInterval(() => {
-          saveGlobal("autoSave", "autoSave", path.join(__dirname, "last.json"));
+          // saveGlobal("autoSave", "autoSave", path.join(__dirname, "last.json"));
         }, 10000);
         if (!globalCache.data.paused && globalCache.data.started) {
           let durationStampCur = timeCur - globalCache.data.startTimeStamp;
@@ -293,7 +326,7 @@ let loadPreset = (e, filePath) => {
           TotalResetButton.classList.remove("is-disabled");
         }
       }
-    });
+    }
   } catch (error) {
     console.log(error);
     if (e != "loadLast") {

@@ -1,0 +1,37 @@
+body {
+  margin: 0;
+}
+#teamsMapBox {
+  transform-origin: 0 0;
+  transform: scale(0.4);
+  width: auto;
+  white-space: nowrap;
+}
+svg {
+  background-image: url("../map.png");
+  width: 810px;
+  height: 1440px;
+  border: 2px solid black;
+}
+image {
+  width: 80px;
+}
+svg .guild {
+  transition: transform 1s cubic-bezier(0.8, 0.01, 0.25, 1.01),
+    opacity 0.3s ease-in-out;
+  /* transform: translate(-50%, -50%); */
+}
+line {
+  stroke: black;
+  stroke-width: 10px;
+  stroke-dasharray: 9999px;
+  stroke-dashoffset: 9999px;
+}
+.line-cur {
+  animation: line-cur 1s cubic-bezier(0.8, 0.01, 0.25, 1.01) forwards;
+}
+@keyframes line-cur {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
