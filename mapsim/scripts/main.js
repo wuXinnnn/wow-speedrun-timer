@@ -79,6 +79,10 @@ let timeLineCallBack = (guilds) => {
     });
 
     if (finishedBoss.length > 0) {
+      $(".guild" + guildIndex).attr(
+        "xlink:href",
+        "./teamLogoes/" + guild + ".png"
+      );
       $(".guild" + guildIndex).css("opacity", 1);
       let posCurX = bossPos[finishedBoss[finishedBoss.length - 1].bossId][0];
       let posCurY = bossPos[finishedBoss[finishedBoss.length - 1].bossId][1];

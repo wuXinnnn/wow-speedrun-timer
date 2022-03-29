@@ -1,11 +1,11 @@
 let bossPos = [
-  [275, 892],
-  [275, 974],
-  [534, 974],
-  [534, 892],
-  [781, 838],
-  [26, 838],
+  [287, 123],
+  [338, 421],
+  [459, 388],
+  [480, 129],
+  [589, 290],
+  [750, 291],
 ];
-let defPos = [0, 0];
-let defAvatarSize = 80;
+let defPos = [77, 295];
+let defAvatarSize = 64;
 export { bossPos, defAvatarSize, defPos };
