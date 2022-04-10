@@ -1,0 +1,316 @@
+{
+    "startTimeStamp": 1649619784018,
+    "startTime": "2022/4/11 3:43:4",
+    "timeDurationStr": "00:03:14",
+    "timeDurationStamp": 194908,
+    "stops": [],
+    "paused": false,
+    "guilds": {
+      "diamond": {
+        "startTimeStamp": 1649619784018,
+        "startTime": "2022/4/11 3:43:4",
+        "timeDurationStr": "00:03:12",
+        "timeDurationStamp": 192629,
+        "stops": [
+          [
+            1649619971653,
+            1649619973932
+          ]
+        ],
+        "paused": false,
+        "started": true,
+        "guildName": "diamond",
+        "guildPic": "diamond.png",
+        "timeLine": [
+          {
+            "bossName": "埃基尔松（鹰）",
+            "finished": true,
+            "finishedTimeStr": "00:00:04",
+            "finishedTimeStamp": 4003
+          },
+          {
+            "bossName": "纳洛拉克（熊灵）",
+            "finished": true,
+            "finishedTimeStr": "00:03:08",
+            "finishedTimeStamp": 188629
+          },
+          {
+            "bossName": "加亚莱（龙鹰）",
+            "finished": true,
+            "finishedTimeStr": "00:03:09",
+            "finishedTimeStamp": 189628
+          },
+          {
+            "bossName": "哈尔拉兹（山猫）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "妖术领主玛拉卡斯",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "祖尔金",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          }
+        ],
+        "guildId": 0
+      },
+      "cross": {
+        "startTimeStamp": 1649619784018,
+        "startTime": "2022/4/11 3:43:4",
+        "timeDurationStr": "00:03:14",
+        "timeDurationStamp": 194908,
+        "stops": [],
+        "paused": false,
+        "started": true,
+        "guildName": "cross",
+        "guildPic": "cross.png",
+        "timeLine": [
+          {
+            "bossName": "埃基尔松（鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "纳洛拉克（熊灵）",
+            "finished": true,
+            "finishedTimeStr": "00:00:08",
+            "finishedTimeStamp": 8003
+          },
+          {
+            "bossName": "加亚莱（龙鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "哈尔拉兹（山猫）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "妖术领主玛拉卡斯",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "祖尔金",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          }
+        ],
+        "guildId": 1
+      },
+      "circle": {
+        "startTimeStamp": 1649619784018,
+        "startTime": "2022/4/11 3:43:4",
+        "timeDurationStr": "00:03:14",
+        "timeDurationStamp": 194908,
+        "stops": [],
+        "paused": false,
+        "started": true,
+        "guildName": "circle",
+        "guildPic": "circle.png",
+        "timeLine": [
+          {
+            "bossName": "埃基尔松（鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "纳洛拉克（熊灵）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "加亚莱（龙鹰）",
+            "finished": true,
+            "finishedTimeStr": "00:00:11",
+            "finishedTimeStamp": 11003
+          },
+          {
+            "bossName": "哈尔拉兹（山猫）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "妖术领主玛拉卡斯",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "祖尔金",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          }
+        ],
+        "guildId": 2
+      },
+      "star": {
+        "startTimeStamp": 1649619784018,
+        "startTime": "2022/4/11 3:43:4",
+        "timeDurationStr": "00:03:14",
+        "timeDurationStamp": 194908,
+        "stops": [],
+        "paused": false,
+        "started": true,
+        "guildName": "star",
+        "guildPic": "star.png",
+        "timeLine": [
+          {
+            "bossName": "埃基尔松（鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "纳洛拉克（熊灵）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "加亚莱（龙鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "哈尔拉兹（山猫）",
+            "finished": true,
+            "finishedTimeStr": "00:01:02",
+            "finishedTimeStamp": 62004
+          },
+          {
+            "bossName": "妖术领主玛拉卡斯",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "祖尔金",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          }
+        ],
+        "guildId": 3
+      },
+      "moon": {
+        "startTimeStamp": 1649619784018,
+        "startTime": "2022/4/11 3:43:4",
+        "timeDurationStr": "00:03:14",
+        "timeDurationStamp": 194908,
+        "stops": [],
+        "paused": false,
+        "started": true,
+        "guildName": "moon",
+        "guildPic": "moon.png",
+        "timeLine": [
+          {
+            "bossName": "埃基尔松（鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "纳洛拉克（熊灵）",
+            "finished": true,
+            "finishedTimeStr": "00:01:21",
+            "finishedTimeStamp": 81003
+          },
+          {
+            "bossName": "加亚莱（龙鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "哈尔拉兹（山猫）",
+            "finished": true,
+            "finishedTimeStr": "00:01:24",
+            "finishedTimeStamp": 84004
+          },
+          {
+            "bossName": "妖术领主玛拉卡斯",
+            "finished": true,
+            "finishedTimeStr": "00:01:05",
+            "finishedTimeStamp": 65004
+          },
+          {
+            "bossName": "祖尔金",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          }
+        ],
+        "guildId": 4
+      },
+      "triangle": {
+        "startTimeStamp": 1649619784018,
+        "startTime": "2022/4/11 3:43:4",
+        "timeDurationStr": "00:03:14",
+        "timeDurationStamp": 194908,
+        "stops": [],
+        "paused": false,
+        "started": true,
+        "guildName": "triangle",
+        "guildPic": "triangle.png",
+        "timeLine": [
+          {
+            "bossName": "埃基尔松（鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "纳洛拉克（熊灵）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "加亚莱（龙鹰）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "哈尔拉兹（山猫）",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "妖术领主玛拉卡斯",
+            "finished": false,
+            "finishedTimeStr": "",
+            "finishedTimeStamp": ""
+          },
+          {
+            "bossName": "祖尔金",
+            "finished": true,
+            "finishedTimeStr": "00:01:08",
+            "finishedTimeStamp": 68003
+          }
+        ],
+        "guildId": 5
+      }
+    },
+    "started": true
+  }

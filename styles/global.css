@@ -139,7 +139,7 @@ body {
 }
 .guild-container {
   display: inline-block;
-  width: 500px;
+  width: 800px;
   white-space: nowrap;
 }
 option {
@@ -288,6 +288,16 @@ option {
   width: 210px;
   position: relative;
 }
+.single-timer-container {
+  height: 55px;
+  width: 180px;
+  position: relative;
+}
+.single-timer-view {
+  font-size: 22px;
+  line-height: 3px;
+}
+
 .preview-panel-container {
   height: 308px;
   overflow: hidden;

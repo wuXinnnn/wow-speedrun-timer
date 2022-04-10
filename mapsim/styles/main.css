@@ -4,7 +4,7 @@ body {
 #teamsMapBox {
   transform-origin: 0 0;
   transform: scale(0.7);
-  width: 1664px;
+  width: 2500px;
   font-size: 0;
 }
 svg {

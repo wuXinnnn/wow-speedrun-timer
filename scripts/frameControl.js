@@ -28,6 +28,12 @@ function GuildFrameIni() {
 
 function guildBossListCreator(guildIndex) {
   let guildContent = document.createElement("div");
+  let guildStartBtn = document.createElement("button");
+  let guildPauseBtn = document.createElement("button");
+  let guildResetBtn = document.createElement("button");
+  let guildTimerContainer = document.createElement("div");
+  let guildTimerTitle = document.createElement("p");
+  let guildTimerView = document.createElement("div");
   let guildLabel = document.createElement("label");
   let guildTitleContainer = document.createElement("div");
   let guildNameSpan = document.createElement("span");
@@ -36,6 +42,26 @@ function guildBossListCreator(guildIndex) {
   let guildClearDiv = document.createElement("div");
   guildContent.className =
     "content nes-container is-rounded is-dark guild" + guildIndex;
+  guildStartBtn.setAttribute("type", "button");
+  guildPauseBtn.setAttribute("type", "button");
+  guildResetBtn.setAttribute("type", "button");
+  guildStartBtn.className = "single-start nes-btn is-success is-disabled";
+  guildPauseBtn.className = "single-pause nes-btn is-warning is-disabled";
+  guildResetBtn.className = "single-reset nes-btn is-error is-disabled";
+  guildStartBtn.setAttribute("disabled", "true");
+  guildPauseBtn.setAttribute("disabled", "true");
+  guildResetBtn.setAttribute("disabled", "true");
+  guildStartBtn.setAttribute("tabindex", "-1");
+  guildPauseBtn.setAttribute("tabindex", "-1");
+  guildResetBtn.setAttribute("tabindex", "-1");
+  guildStartBtn.textContent = "START";
+  guildPauseBtn.textContent = "PAUSE/RE";
+  guildResetBtn.textContent = "RESET";
+  guildTimerContainer.className =
+    "single-timer-container nes-container is-dark with-title is-centered";
+  guildTimerTitle.className = "title single-timer-title";
+  guildTimerView.className = "single-timer-view";
+  guildTimerTitle.textContent = "时长";
   guildLabel.setAttribute("for", "guild" + guildIndex);
   guildLabel.style.color = "#fff";
   guildTitleContainer.className = "guild-container nes-field is-inline is-dark";
@@ -48,6 +74,15 @@ function guildBossListCreator(guildIndex) {
   guildClearDiv.className = "clear";
   guildTitleContainer.appendChild(guildNameSpan);
   guildTitleContainer.appendChild(guildNameInput);
+  guildStartBtn.addEventListener("click", guildStartCallback);
+  guildPauseBtn.addEventListener("click", guildPauseCallback);
+  guildResetBtn.addEventListener("click", guildResetCallback);
+  guildTitleContainer.appendChild(guildStartBtn);
+  guildTitleContainer.appendChild(guildPauseBtn);
+  guildTitleContainer.appendChild(guildResetBtn);
+  guildTimerContainer.appendChild(guildTimerTitle);
+  guildTimerContainer.appendChild(guildTimerView);
+  guildTitleContainer.appendChild(guildTimerContainer);
   guildContent.appendChild(guildLabel);
   guildContent.appendChild(guildTitleContainer);
   guildContent.appendChild(guildSlotSpan);
@@ -70,6 +105,7 @@ function guildBossListCreator(guildIndex) {
     guildBossTimerView.setAttribute("bossId", bossIndex);
     bossTimerStopContainer.className = "guild-boss-time-stop-container";
     bossTimerStopButton.className = "nes-btn is-error guild-boss-time-stop";
+    bossTimerStopButton.setAttribute("tabindex", "-1");
     bossTimerStopButton.textContent = "STOP!";
     bossTimerStopContainer.appendChild(bossTimerStopButton);
     guildBoss.appendChild(bossTitle);
@@ -90,15 +126,37 @@ function timerStopCallback(event) {
 }
 
 function allStopShow() {
-  for (let index = 0; index < allStopButtons.length; index++) {
-    allStopButtons[index].style.transform = "translateY(0px)";
+  for (let index = 0; index < guildContents.length; index++) {
+    let guildName = guildContents[index].getElementsByTagName("input")[0].value;
+    let guildObj = global.data.guilds[guildName];
+    if (!guildObj.paused && guildObj.started) {
+      $(
+        ".guild-bosses-container:eq(" +
+          index +
+          ") .guild-boss-time-stop-container"
+      ).css("transform", "translateY(-6px)");
+    }
   }
 }
-
+function guildStopShow(guildId) {
+  $(
+    ".guild-bosses-container:eq(" +
+      guildId +
+      ") .guild-boss-time-stop-container"
+  ).css("transform", "translateY(-6px)");
+}
 function allStopHide() {
   for (let index = 0; index < allStopButtons.length; index++) {
     allStopButtons[index].style.transform = "translateY(60px)";
   }
+}
+
+function guildStopHide(guildId) {
+  $(
+    ".guild-bosses-container:eq(" +
+      guildId +
+      ") .guild-boss-time-stop-container"
+  ).css("transform", "translateY(60px)");
 }
 
 function itemDeleteCallback(event) {
@@ -234,6 +292,7 @@ gEvent.on("started", allStopShow);
 gEvent.on("allStopHide", allStopHide);
 gEvent.on("allStopShow", allStopShow);
 gEvent.on("errorModalShow", errorModalShow);
-
+gEvent.on("guildStopShow", guildStopShow);
+gEvent.on("guildStopHide", guildStopHide);
 GuildFrameIni();
 loadPreset("loadLast", path.join(__dirname, "./last.json"));

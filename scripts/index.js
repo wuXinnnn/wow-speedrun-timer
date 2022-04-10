@@ -75,6 +75,13 @@ let globalReady = () => {
     let guildName = guildContents[index].getElementsByTagName("input")[0].value;
     let guildObj = {};
     guildObj = {
+      startTimeStamp: 0,
+      startTime: "",
+      timeDurationStr: "",
+      timeDurationStamp: 0,
+      stops: [],
+      paused: false,
+      started: false,
       guildName: guildName,
       guildPic: guildName + ".png",
       timeLine: [],
@@ -89,14 +96,25 @@ let globalReady = () => {
       };
       guildObj.timeLine.push(bossObj);
     });
+    guildContents[index].getElementsByTagName("input")[0].disabled = true;
     global.data.guilds[guildName] = guildObj;
   }
   TotalReadyButton.classList.add("is-disabled");
+  TotalReadyButton.setAttribute("disabled", "true");
   addButton.style = "display:none";
   reduceButton.style = "display:none";
   TotalStartButton.classList.remove("is-disabled");
-  TotalStopButton.classList.remove("is-disabled");
+  TotalStopButton.classList.add("is-disabled");
   TotalResetButton.classList.remove("is-disabled");
+  TotalStartButton.removeAttribute("disabled");
+  TotalStopButton.setAttribute("disabled", "true");
+  TotalResetButton.removeAttribute("disabled");
+  $(".single-start").removeClass("is-disabled");
+  $(".single-pause").addClass("is-disabled");
+  $(".single-reset").removeClass("is-disabled");
+  $(".single-start").removeAttr("disabled");
+  $(".single-pause").attr("disabled", "true");
+  $(".single-reset").removeAttr("disabled");
   autoSaveInterval = setInterval(() => {
     saveGlobal("autoSave", "autoSave", path.join(__dirname, "last.json"));
   }, 10000);
@@ -111,12 +129,33 @@ let globalTimerStart = () => {
     " ",
     ":"
   );
+  Object.keys(global.data.guilds).forEach((guildName) => {
+    let guildObj = global.data.guilds[guildName];
+    if (!guildObj.started) {
+      global.data.guilds[guildName].startTimeStamp = global.data.startTimeStamp;
+      global.data.guilds[guildName].startTime = global.data.startTime;
+      global.data.guilds[guildName].started = true;
+      $(".single-start:eq(" + guildObj.guildId + ")").addClass("is-disabled");
+      $(".single-pause:eq(" + guildObj.guildId + ")").removeClass(
+        "is-disabled"
+      );
+      $(".single-reset:eq(" + guildObj.guildId + ")").addClass("is-disabled");
+      $(".single-start:eq(" + guildObj.guildId + ")").attr("disabled", "true");
+      $(".single-pause:eq(" + guildObj.guildId + ")").removeAttr("disabled");
+      $(".single-reset:eq(" + guildObj.guildId + ")").attr("disabled", "true");
+      $(".single-timer-view:eq(" + guildObj.guildId + ")").text("00:00:00");
+    }
+  });
   totalTimerView.textContent = "00:00:00";
-  globalInterval = setInterval(timerNow, 1000);
   global.data.started = true;
   gEvent.emit("started");
+  globalInterval = setInterval(timerNow, 1000);
   TotalStartButton.classList.add("is-disabled");
+  TotalStopButton.classList.remove("is-disabled");
   TotalResetButton.classList.add("is-disabled");
+  TotalStartButton.setAttribute("disabled", "true");
+  TotalStopButton.removeAttribute("disabled");
+  TotalResetButton.setAttribute("disabled", "true");
 };
 
 let globalTimerPauseRe = () => {
@@ -127,11 +166,44 @@ let globalTimerPauseRe = () => {
     global.data.paused = false;
     gEvent.emit("allStopShow");
     TotalResetButton.classList.add("is-disabled");
+    TotalResetButton.setAttribute("disabled", "true");
   } else {
     global.data.stops[global.data.stops.length] = [timeNowStamp];
     global.data.paused = true;
     gEvent.emit("allStopHide");
     TotalResetButton.classList.remove("is-disabled");
+    TotalResetButton.removeAttribute("disabled");
+  }
+  for (let index = 0; index < guildContents.length; index++) {
+    let guildName = guildContents[index].getElementsByTagName("input")[0].value;
+    let guildObj = global.data.guilds[guildName];
+    if (!guildObj.started) {
+      continue;
+    }
+    if (guildObj.paused) {
+      if (global.data.paused) {
+        continue;
+      }
+      guildObj.stops[guildObj.stops.length - 1][1] = timeNowStamp;
+      guildObj.paused = false;
+      gEvent.emit("guildStopShow", index);
+      guildContents[index]
+        .getElementsByClassName("single-reset")[0]
+        .classList.add("is-disabled");
+      guildContents[index]
+        .getElementsByClassName("single-reset")[0]
+        .setAttribute("disabled", "true");
+    } else {
+      guildObj.stops[guildObj.stops.length] = [timeNowStamp];
+      guildObj.paused = true;
+      gEvent.emit("guildStopHide", index);
+      guildContents[index]
+        .getElementsByClassName("single-reset")[0]
+        .classList.remove("is-disabled");
+      guildContents[index]
+        .getElementsByClassName("single-reset")[0]
+        .removeAttribute("disabled");
+    }
   }
 };
 
@@ -153,6 +225,32 @@ let timerNow = () => {
   global.data.timeDurationStamp = timeDurationStamp;
   global.data.timeDurationStr = timeDurationStr;
   totalTimerView.textContent = timeDurationStr;
+  for (let index = 0; index < guildContents.length; index++) {
+    let guildName = guildContents[index].getElementsByTagName("input")[0].value;
+    let guildObj = global.data.guilds[guildName];
+    let guildTimeNow = new Date();
+    if (!guildObj.started) {
+      continue;
+    }
+    if (guildObj.paused) {
+      guildTimeNow = guildObj.stops[guildObj.stops.length - 1][0];
+    } else {
+      timeNow = new Date();
+    }
+    let guildTimeNowStamp = guildTimeNow.valueOf();
+    let guildTimeDurationStamp = guildTimeNowStamp - guildObj.startTimeStamp;
+    guildObj.stops.forEach((stop) => {
+      if (stop.length == 2) {
+        guildTimeDurationStamp = guildTimeDurationStamp - (stop[1] - stop[0]);
+      }
+    });
+    let guildTimeDurationStr = timeDuration(guildTimeDurationStamp);
+    guildObj.timeDurationStamp = guildTimeDurationStamp;
+    guildObj.timeDurationStr = guildTimeDurationStr;
+    guildContents[index].getElementsByClassName(
+      "single-timer-view"
+    )[0].textContent = guildTimeDurationStr;
+  }
 };
 
 let globalIni = () => {
@@ -160,6 +258,7 @@ let globalIni = () => {
   allStopHide();
   clearInterval(globalInterval);
   totalTimerView.textContent = "";
+  $(".single-timer-view").text("");
   let allStopView = document.getElementsByClassName("guild-boss-timer-view");
   for (let index = 0; index < allStopView.length; index++) {
     allStopView[index].textContent = "";
@@ -174,11 +273,131 @@ let globalIni = () => {
     guilds: {},
   };
   TotalReadyButton.classList.remove("is-disabled");
+  TotalReadyButton.removeAttribute("disabled");
   addButton.style = "";
   reduceButton.style = "";
   TotalStartButton.classList.add("is-disabled");
   TotalStopButton.classList.add("is-disabled");
   TotalResetButton.classList.add("is-disabled");
+  TotalStartButton.setAttribute("disabled", "true");
+  TotalStopButton.setAttribute("disabled", "true");
+  TotalResetButton.setAttribute("disabled", "true");
+  $(".single-start").addClass("is-disabled");
+  $(".single-pause").addClass("is-disabled");
+  $(".single-reset").addClass("is-disabled");
+  $(".single-start").attr("disabled", "true");
+  $(".single-pause").attr("disabled", "true");
+  $(".single-reset").attr("disabled", "true");
+  $(".guild-container input").removeAttr("disabled");
+};
+
+let guildStartCallback = (btnEl) => {
+  let guildName =
+    btnEl.target.parentNode.getElementsByTagName("input")[0].value;
+  let guildObj = global.data.guilds[guildName];
+  let timeNow = new Date();
+  guildObj.startTimeStamp = timeNow.valueOf();
+  guildObj.startTime = getTimeByValue(guildObj.startTimeStamp, "/", " ", ":");
+  $(".single-start:eq(" + guildObj.guildId + ")").addClass("is-disabled");
+  $(".single-pause:eq(" + guildObj.guildId + ")").removeClass("is-disabled");
+  $(".single-reset:eq(" + guildObj.guildId + ")").addClass("is-disabled");
+  $(".single-start:eq(" + guildObj.guildId + ")").attr("disabled", "true");
+  $(".single-pause:eq(" + guildObj.guildId + ")").removeAttr("disabled");
+  $(".single-reset:eq(" + guildObj.guildId + ")").attr("disabled", "true");
+  $(".single-timer-view:eq(" + guildObj.guildId + ")").text("00:00:00");
+
+  guildObj.started = true;
+  gEvent.emit("guildStopShow", guildObj.guildId);
+
+  if (!global.data.started) {
+    global.data.startTimeStamp = timeNow.valueOf();
+    global.data.startTime = getTimeByValue(
+      global.data.startTimeStamp,
+      "/",
+      " ",
+      ":"
+    );
+    totalTimerView.textContent = "00:00:00";
+    global.data.started = true;
+    TotalStartButton.classList.add("is-disabled");
+    TotalStopButton.classList.remove("is-disabled");
+    TotalResetButton.classList.add("is-disabled");
+    TotalStartButton.setAttribute("disabled", "true");
+    TotalStopButton.removeAttribute("disabled");
+    TotalResetButton.setAttribute("disabled", "true");
+    globalInterval = setInterval(timerNow, 1000);
+  }
+};
+
+let guildPauseCallback = (btnEl) => {
+  let guildName =
+    btnEl.target.parentNode.getElementsByTagName("input")[0].value;
+  let guildObj = global.data.guilds[guildName];
+  let timeNow = new Date();
+  let timeNowStamp = timeNow.valueOf();
+  if (guildObj.paused) {
+    guildObj.stops[guildObj.stops.length - 1][1] = timeNowStamp;
+    guildObj.paused = false;
+    gEvent.emit("guildStopShow", guildObj.guildId);
+    $(".single-reset:eq(" + guildObj.guildId + ")").addClass("is-disabled");
+    $(".single-reset:eq(" + guildObj.guildId + ")").attr("disabled", "true");
+  } else {
+    guildObj.stops[guildObj.stops.length] = [timeNowStamp];
+    guildObj.paused = true;
+    gEvent.emit("guildStopHide", guildObj.guildId);
+    $(".single-reset:eq(" + guildObj.guildId + ")").removeClass("is-disabled");
+    $(".single-reset:eq(" + guildObj.guildId + ")").removeAttr("disabled");
+  }
+};
+
+let guildResetCallback = (btnEl) => {
+  let guildName =
+    btnEl.target.parentNode.getElementsByTagName("input")[0].value;
+  let guildObj = global.data.guilds[guildName];
+  $(".single-timer-view:eq(" + guildObj.guildId + ")").text("");
+  gEvent.emit("guildStopHide", guildObj.guildId);
+  $(
+    ".guild-bosses-container:eq(" +
+      guildObj.guildId +
+      ") .guild-boss-timer-view"
+  ).text("");
+
+  let newGuildName =
+    guildContents[guildObj.guildId].getElementsByTagName("input")[0].value;
+  if (!newGuildName) {
+    return;
+  }
+  let newGuildObj = {};
+  newGuildObj = {
+    startTimeStamp: 0,
+    startTime: "",
+    timeDurationStr: "",
+    timeDurationStamp: 0,
+    stops: [],
+    paused: false,
+    started: false,
+    guildName: newGuildName,
+    guildPic: newGuildName + ".png",
+    timeLine: [],
+    guildId: guildObj.guildId,
+  };
+  global.bossList.forEach((boss) => {
+    let bossObj = {
+      bossName: boss.bossName,
+      finished: false,
+      finishedTimeStr: "",
+      finishedTimeStamp: "",
+    };
+    newGuildObj.timeLine.push(bossObj);
+  });
+  delete global.data.guilds[guildName];
+  global.data.guilds[newGuildName] = newGuildObj;
+  $(".single-start:eq(" + newGuildObj.guildId + ")").removeClass("is-disabled");
+  $(".single-pause:eq(" + newGuildObj.guildId + ")").addClass("is-disabled");
+  $(".single-reset:eq(" + newGuildObj.guildId + ")").removeClass("is-disabled");
+  $(".single-start:eq(" + newGuildObj.guildId + ")").removeAttr("disabled");
+  $(".single-pause:eq(" + newGuildObj.guildId + ")").attr("disabled", "true");
+  $(".single-reset:eq(" + newGuildObj.guildId + ")").removeAttr("disabled");
 };
 
 let timeToSeconds = (t) => {
@@ -219,14 +438,13 @@ let bossStop = (viewEl) => {
   let guildName =
     viewEl.parentNode.parentNode.parentNode.getElementsByTagName("input")[0]
       .value;
-  let timeStrNow = global.data.timeDurationStr;
-  let timeStampNow = global.data.timeDurationStamp;
+  let guildObj = global.data.guilds[guildName];
+  let timeStrNow = guildObj.timeDurationStr;
+  let timeStampNow = guildObj.timeDurationStamp;
   let bossIndex = viewEl.getAttribute("bossId");
-  global.data.guilds[guildName].timeLine[bossIndex].finishedTimeStamp =
-    timeStampNow;
-  global.data.guilds[guildName].timeLine[bossIndex].finishedTimeStr =
-    timeStrNow;
-  global.data.guilds[guildName].timeLine[bossIndex].finished = true;
+  guildObj.timeLine[bossIndex].finishedTimeStamp = timeStampNow;
+  guildObj.timeLine[bossIndex].finishedTimeStr = timeStrNow;
+  guildObj.timeLine[bossIndex].finished = true;
   viewEl.textContent = timeStrNow;
 };
 
@@ -282,49 +500,88 @@ let loadPreset = (e, filePath) => {
       let guildName = Object.keys(globalCache.data.guilds)[index];
       guildsSort[globalCache.data.guilds[guildName].guildId] = guildName;
     }
+    let timeCur = new Date();
     for (let index = 0; index < guildsSort.length; index++) {
       let guildName = guildsSort[index];
       guildBossListCreator(index);
       document.getElementsByTagName("input")[index].value = guildName;
-      globalCache.data.guilds[guildName].timeLine.forEach((boss, bossIndex) => {
+      let guildObj = globalCache.data.guilds[guildName];
+      guildObj.timeLine.forEach((boss, bossIndex) => {
         if (boss.finished) {
           document.getElementsByClassName("guild-boss-timer-view")[
-            bossIndex +
-              index * globalCache.data.guilds[guildName].timeLine.length
+            bossIndex + index * guildObj.timeLine.length
           ].textContent = boss.finishedTimeStr;
         }
       });
-      if (globalCache.data.started) {
-        if (globalInterval != null) {
-          clearInterval(globalInterval);
-        }
-        if (autoSaveInterval != null) {
-          clearInterval(autoSaveInterval);
-        }
-        TotalReadyButton.classList.add("is-disabled");
-        addButton.style = "display:none";
-        reduceButton.style = "display:none";
-        TotalStartButton.classList.add("is-disabled");
-        TotalStopButton.classList.remove("is-disabled");
-        TotalResetButton.classList.add("is-disabled");
-        let timeCur = new Date();
-        autoSaveInterval = setInterval(() => {
-          saveGlobal("autoSave", "autoSave", path.join(__dirname, "last.json"));
-        }, 10000);
-        if (!globalCache.data.paused && globalCache.data.started) {
-          let durationStampCur = timeCur - globalCache.data.startTimeStamp;
-          globalCache.data.stops.forEach((stop) => {
-            durationStampCur = durationStampCur - stop[1] + stop[0];
+      if (guildObj.started) {
+        $(".single-start:eq(" + index + ")").addClass("is-disabled");
+        $(".single-pause:eq(" + index + ")").removeClass("is-disabled");
+        $(".single-reset:eq(" + index + ")").addClass("is-disabled");
+        $(".single-start:eq(" + index + ")").attr("disabled", "true");
+        $(".single-pause:eq(" + index + ")").removeAttr("disabled");
+        $(".single-reset:eq(" + index + ")").attr("disabled", "true");
+        gEvent.emit("guildStopShow", index);
+        if (guildObj.paused) {
+          $(".single-reset:eq(" + index + ")").removeClass("is-disabled");
+          $(".single-reset:eq(" + index + ")").removeAttr("disabled");
+          gEvent.emit("guildStopHide", index);
+          $(".single-timer-view:eq(" + index + ")").text(
+            guildObj.timeDurationStr
+          );
+        } else {
+          let guildDurationStampCur = timeCur - guildObj.startTimeStamp;
+          guildObj.stops.forEach((stop) => {
+            guildDurationStampCur = guildDurationStampCur - stop[1] + stop[0];
           });
-          totalTimerView.textContent = timeDuration(durationStampCur);
+          $(".single-timer-view:eq(" + index + ")").text(
+            timeDuration(guildDurationStampCur)
+          );
         }
-        globalInterval = setInterval(timerNow, 1000);
-        gEvent.emit("started");
-        if (globalCache.data.paused) {
-          totalTimerView.textContent = globalCache.data.timeDurationStr;
-          gEvent.emit("allStopHide", allStopHide);
-          TotalResetButton.classList.remove("is-disabled");
-        }
+      } else if (globalCache.data.started) {
+        $(".single-start:eq(" + index + ")").removeClass("is-disabled");
+        $(".single-pause:eq(" + index + ")").addClass("is-disabled");
+        $(".single-reset:eq(" + index + ")").removeClass("is-disabled");
+        $(".single-start:eq(" + index + ")").removeAttr("disabled");
+        $(".single-pause:eq(" + index + ")").attr("disabled", "true");
+        $(".single-reset:eq(" + index + ")").removeAttr("disabled");
+      }
+    }
+    if (globalCache.data.started) {
+      if (globalInterval != null) {
+        clearInterval(globalInterval);
+      }
+      if (autoSaveInterval != null) {
+        clearInterval(autoSaveInterval);
+      }
+      $(".guild-container input").attr("disabled", "true");
+      TotalReadyButton.classList.add("is-disabled");
+      TotalReadyButton.setAttribute("disabled", "true");
+      addButton.style = "display:none";
+      reduceButton.style = "display:none";
+      TotalStartButton.classList.add("is-disabled");
+      TotalStopButton.classList.remove("is-disabled");
+      TotalResetButton.classList.add("is-disabled");
+      TotalStartButton.setAttribute("disabled", "true");
+      TotalStopButton.removeAttribute("disabled");
+      TotalResetButton.setAttribute("disabled", "true");
+
+      autoSaveInterval = setInterval(() => {
+        saveGlobal("autoSave", "autoSave", path.join(__dirname, "last.json"));
+      }, 10000);
+      if (!globalCache.data.paused && globalCache.data.started) {
+        let durationStampCur = timeCur - globalCache.data.startTimeStamp;
+        globalCache.data.stops.forEach((stop) => {
+          durationStampCur = durationStampCur - stop[1] + stop[0];
+        });
+        totalTimerView.textContent = timeDuration(durationStampCur);
+      }
+      globalInterval = setInterval(timerNow, 1000);
+      gEvent.emit("started");
+      if (globalCache.data.paused) {
+        totalTimerView.textContent = globalCache.data.timeDurationStr;
+        gEvent.emit("allStopHide", allStopHide);
+        TotalResetButton.classList.remove("is-disabled");
+        TotalResetButton.removeAttribute("disabled");
       }
     }
   } catch (error) {

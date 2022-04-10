@@ -27,8 +27,8 @@ for (let index = 0; index < bossPos.length; index++) {
 }
 
 let timeLineCallBack = (guilds) => {
-  if (Object.keys(guilds).length < 4) {
-    for (let elIndex = Object.keys(guilds).length; elIndex < 4; elIndex++) {
+  if (Object.keys(guilds).length < 7) {
+    for (let elIndex = Object.keys(guilds).length; elIndex < 6; elIndex++) {
       $("#guildMap" + elIndex)
         .children("line")
         .attr("x1", null);

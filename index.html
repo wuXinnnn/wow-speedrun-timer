@@ -32,7 +32,32 @@
           <div class="guild-container nes-field is-inline is-dark">
             <span class="guild-name-title">GUILD NAME:</span
             ><input class="nes-input is-dark" type="text" />
+            <button
+              type="button"
+              class="single-start nes-btn is-success is-disabled"
+            >
+              START
+            </button>
+            <button
+              type="button"
+              class="single-pause nes-btn is-warning is-disabled"
+            >
+              PAUSE/RE
+            </button>
+            <button
+              type="button"
+              class="single-reset nes-btn is-error is-disabled"
+            >
+              RESET
+            </button>
+            <div
+              class="single-timer-container nes-container is-dark with-title is-centered"
+            >
+              <p class="title single-timer-title">时长</p>
+              <div class="single-timer-view">00:00:00</div>
+            </div>
           </div>
+
           <span class="frameSlot">1#</span>
           <div class="clear"></div>
           <div class="guild-bosses-container">
@@ -67,13 +92,20 @@
         </div>
         <div class="bottom-center-container">
           <div class="total-timer-time-buttons-container">
-            <button type="button" id="TotalReady" class="nes-btn is-primary">
+            <button
+              type="button"
+              id="TotalReady"
+              class="nes-btn is-primary"
+              tabindex="-1"
+            >
               READY
             </button>
             <button
               type="button"
               id="TotalStart"
               class="nes-btn is-success is-disabled"
+              disabled
+              tabindex="-1"
             >
               START
             </button>
@@ -81,6 +113,8 @@
               type="button"
               id="TotalStop"
               class="nes-btn is-warning is-disabled"
+              disabled
+              tabindex="-1"
             >
               PAUSE/RE
             </button>
@@ -88,6 +122,8 @@
               type="button"
               id="TotalReset"
               class="nes-btn is-error is-disabled"
+              disabled
+              tabindex="-1"
             >
               RESET
             </button>
@@ -104,6 +140,7 @@
             type="button"
             class="nes-btn is-success bottom-button"
             id="saveButton"
+            tabindex="-1"
           >
             <img
               id="saveButtonImg"
@@ -114,6 +151,7 @@
             type="button"
             class="nes-btn is-warning bottom-button"
             id="uploadButton"
+            tabindex="-1"
           >
             <img id="uploadButtonImg" src="./styles/images/upload.png" alt="" />
           </button>
